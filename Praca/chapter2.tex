@@ -1,0 +1,49 @@
+\chapter{Uwagi od strony technicznej}
+
+\section{Opcje}
+
+\begin{enumerate}
+ \item \verb|strict| -- domyœlnie, klasa stara siê jak najœciœlej wype³niaæ zalecenia
+ \item \verb|nostrict| -- drobne modyfikacje typograficzne
+ \begin{itemize}
+  \item zmniejszenie wciêcia akapitowego z 1.25cm na 1.5em
+ \end{itemize}
+\end{enumerate}
+
+\section{Wymagane pakiety}
+Lista pakietów, które s¹ wymagane do kompilacji (wiêkszoœæ z nich jest zapewne zainstalowana
+domyœlnie)
+\begin{enumerate}
+  \item \verb|polski| -- polonizacja \TeX'a
+  \item \verb|fontenc| -- kodowanie znaków
+  \item \verb|inputenc| -- kodowanie znaków
+  \item \verb|helvet| -- wybiera font podobny do Arial
+  \item \verb|geometry| -- ustawienie marginesów
+  \item \verb|indentfirst| -- wciêcie pierwszego akapitu
+  \item \verb|fancyhdr| -- paginacja
+  \item \verb|titlesec| -- tytularia
+  \item \verb|titletoc| -- formatowanie spisu treœci
+  \item \verb|enumitem| -- wyliczenia numerowane i nienumerowane
+  \item \verb|amsmath,amssymb,amsthm| -- standardowe pakiety matematyczne
+  \item \verb|graphicx| -- do³¹czanie obrazków
+  \item \verb|subfig| -- wiele obrazków na jednym rysunku
+  \item \verb|caption| -- format podpisu pod obrazkiem
+\end{enumerate}
+
+\section{Fonty}
+
+Wymaganym fontem jest Arial. Poniewa¿ taki font nie jest ³atwo dostêpny w \LaTeX'u wiêc korzystamy
+z fonta zastêpczego w pakiecie \verb|helv|. Wymagany font matematyczny nie zosta³ podany. U¿ywamy
+zatem fontu z pakietu \verb|mathpazo|.
+\begin{verbatim}
+\usepackage{helvet}
+\usepackage{mathpazo}
+\renewcommand{\familydefault}{\sfdefault}
+\end{verbatim}
+
+Inn¹ wersje fontu bezszeryfowego mo¿na uzyskaæ poprzez zrezygnowanie z pakietu \verb|helv|.
+
+Przyk³adowy: $\sin(x)+ay^2$.
+\[
+ \sin(x)+ay^2
+\]

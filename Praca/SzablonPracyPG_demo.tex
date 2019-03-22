@@ -1,0 +1,54 @@
+\documentclass[nostrict]{szablonPG}
+
+% Je¿eli chcemy aby PDF mia³ tytu³ naszej pracy mo¿emy skorzystac z tej konstrukcji
+% UWAGA! zmieniæ dane na w³aœciwe!!!
+\usepackage[unicode=true]{hyperref}
+\newcommand\PDFtitle{Szablon Pracy PG - demo - ¹œ¿Ÿæêó³ñ}
+\newcommand\PDFauthors{¹œ¿Ÿæêó³ñ}
+\hypersetup{
+  pdftitle={\PDFtitle},
+  pdfauthor={\PDFauthors},
+%   pdfsubject={},
+%   pdfkeywords={}
+ }
+
+\usepackage{multicol} % do sk³adu w dwóch kolumnach
+
+%---- tylko na potrzeby tego pliku
+\makeatletter
+\renewcommand{\verbatim@font}{\ttfamily\small}
+\makeatother
+%-----
+
+\begin{document}
+
+\tableofcontents    % spis treœci
+\listoffigures      % spis obrazków
+
+\include{chapter1}
+\include{chapter2}
+
+%bibliografia
+\bibliographystyle{plain}                       % styl bibliografii
+\begin{thebibliography}{3}                      % pocz¹tek œrodowiska
+\addcontentsline{toc}{chapter}{Bibliografia}    % dodaje bibliografiê do spisu treœci
+\small              % spisy i bibliografie sk³adamy mniejszym stopniem pisma
+% przyk³adowy wpis
+    \bibitem{Duda}      % \bibitem{etykieta}
+A. Duda,\emph{Wprowadzenie do topologii}, PWN, Warszawa 1986
+% nastêpna pozycja
+    \bibitem{EngeSiek}
+R. Engelking, K. Sieklucki, \emph{Geometria i topologia. Czêœæ II. Topologia}, PWN, Warszawa 1980
+% nastêpna pozycja
+    \bibitem{Patk}
+H. Patkowska, \emph{Wstêp do topologii}, PWN, Warszawa 1979
+% nastêpna pozycja
+    \bibitem{Siek}
+K. Sieklucki, \emph{Geometria i topologia. Czêœæ I. Geometria}, PWN, Warszawa 1979
+% nastêpna pozycja
+    \bibitem{Rutkowski}
+Rutkowski J., \emph{Algebra Abstrakcyjna w zadaniach},  Wydawnictwo Naukowe PWN, Warszawa 2005
+\end{thebibliography}                           % koniec œrodowiska
+\end{document}
+
+%EOF
