@@ -1,0 +1,172 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%POCZĄTEK CZĘŚCI KONFIGURACYJNEJ%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
+\usepackage{pgf}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{beamerthemesplit}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage{srcltx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{helvet}
+
+\setbeamertemplate{headline}{}
+
+
+\mode<presentation>
+\captionsetup{font=scriptsize,labelfont=scriptsize}
+\addto\captionspolish{%
+  \renewcommand{\figurename}{Rys.}%
+}
+\beamertemplatenavigationsymbolsempty  % Wyłączenie widoczności symboli do nawigowania rzutnikiem
+
+%%%% Aktywacja numeracji slajdów i rysunków %%%%%%
+\setbeamertemplate{footline}[frame number, footnote]
+\setbeamertemplate{caption}[numbered]
+
+%%%%%% Konfiguracja czcionki do wzorów? %%%%%%%%%
+  \useinnertheme{circles}   % punktory w kształcie koła
+  \usefonttheme[onlymath]{serif}
+  \setbeamercovered{transparent}
+
+%%%%%%%% Definicje nowych, pięknych kolorów PG, oraz czcionek %%%%%%%%%%
+\definecolor{BackgroundPGBlue}{RGB}{1, 55, 102}
+\definecolor{BluePG}{RGB}{1, 55,102}
+\definecolor{RedPG}{RGB}{227,27,35}
+
+%%%%%%%% Globalne ustawienia kolorów dla poszczególnych sekcji (tytuly, podpisy itp) oraz czcionek %%%%%%
+\setbeamercolor{frametitle}{bg=white,fg=BackgroundPGBlue}
+\setbeamercolor{itemize item}{fg=BluePG}
+\setbeamercolor{item}{fg=BluePG}
+\setbeamercolor{thead}{fg=white,bg=RedPG}
+\setbeamercolor{normal text}{fg=BluePG}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamercolor{section in toc}{fg=BluePG}
+\setbeamertemplate{enumerate items}[default]
+%%%%%%%% Ustawienie określonej pozycji sekcji tytułu slajdu %%%%%%%%%
+\makeatletter
+\setbeamertemplate{frametitle}{%
+ \vspace*{0.7cm} \hspace*{3.6cm} 
+  \begin{minipage}{0.65\textwidth}
+    \usebeamerfont{frametitle}%
+	\begin{small}
+	\begin{spacing}{0.8}
+	 \textbf{\insertsection}
+	 \end{spacing}
+	\end{small}
+  \end{minipage}
+  
+ \vspace{0.2cm}
+ 
+ \begin{beamercolorbox}[sep=0.3cm,wd=15cm]{thead}
+ \begin{small}\textbf{\insertframetitle}
+ \end{small}
+ \end{beamercolorbox}
+}
+\makeatother
+
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \begin{center}
+  \vspace{1cm}
+  \includegraphics[scale=0.14]{logotytul} \\ \vspace{0.6cm}
+  \usebeamercolor[fg]{subtitle}
+  
+  \usebeamerfont{title}\textbf{\inserttitle} \\ \vspace{0.35cm}
+  \usebeamerfont{author} Autor: \insertauthor \\ \vspace{0.4cm}
+  \usebeamerfont{institute}\insertinstitute \\
+  \usebeamerfont{date}\insertdate\par
+  \end{center}
+}
+
+%%%%% Informacje do strony tytułowej %%%%%%%
+\title{Tytuł Prezentacji}
+\author{Autor prezentacji \\ Drugi autor/Promotor}
+\institute{Nazwa wydziału \\ Politechnika Gdańska}
+\date{Data}
+
+
+
+\begin{document}
+
+%%%%%%% Wygenerowanie strony tytułowej %%%%%%%
+\setbeamercolor{background canvas}{bg=BackgroundPGBlue}%ustawienie pięknego granatowego koloru PG
+%\titlegraphic{\includegraphics[scale=0.12]{logotytul}}
+\setbeamertemplate{footline}{} % Deaktywacja stopki z numeracja
+\frame{
+\maketitle
+}
+
+%%%%%% Dołączenie logo PG w lewy górny róg prezentacji %%%%%%%
+\logo{\pgfputat{\pgfxy(-10,7.5)}{\pgfbox[center,base]{\includegraphics[scale=0.12]{logo}}}}  
+
+\setbeamertemplate{footline}{%
+  \begin{flushright}
+  \tiny \normalfont \insertframenumber/\inserttotalframenumber
+  \end{flushright}
+}
+ % Ponowna aktywacja stopki z numeracja
+\addtocounter{framenumber}{-1}
+%%%%%% Powrót do białego tła %%%%%%%%
+\setbeamercolor{background canvas}{bg=white}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\setbeamerfont{section in toc}{shape=\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%KONIEC CZĘŚCI KONFIGURACYJNEJ%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%% Początek -  Nasza prezentacja  %%%%%%
+
+\begin{frame}
+\tableofcontents  % Wygenerowanie spisu treści (na podstawie sekcji i podsekcji)
+\frametitle{Plan prezentacji}
+\end{frame}
+
+
+%% Przykładowe sekcje prezentacji %%
+
+\section{Pierwsza sekcja prezentacji}
+\subsection{Pierwsza podsekcja}
+\subsection{Druga podsekcja}
+
+\section{Druga sekcja prezentacji}
+\subsection{Podsekcja}
+
+
+\section{Trzecia sekcja prezentacji}
+\subsection{Podsekcja}
+
+
+\section*{Literatura}
+\frame{
+\small %% lokalne zmniejszenie rozmiaru czcionki
+\frametitle{Materiały źródłowe}
+\begin{enumerate}
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\end{enumerate}
+}
+
+
+
+%%%%%%% Ostatni slajd - motto PG %%%%%%%%
+\begin{frame}[plain]
+\addtocounter{framenumber}{-1}
+\vspace{1cm}
+\begin{center}
+\includegraphics[keepaspectratio=true,scale=0.25]{logokoniec.png}
+\end{center}
+\end{frame}
+
+\end{document}

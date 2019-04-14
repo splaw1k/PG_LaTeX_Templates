@@ -1,54 +1,66 @@
 \documentclass[nostrict]{szablonPG}
 
-% Je¿eli chcemy aby PDF mia³ tytu³ naszej pracy mo¿emy skorzystac z tej konstrukcji
-% UWAGA! zmieniæ dane na w³aœciwe!!!
-\usepackage[unicode=true]{hyperref}
-\newcommand\PDFtitle{Szablon Pracy PG - demo - ¹œ¿Ÿæêó³ñ}
-\newcommand\PDFauthors{¹œ¿Ÿæêó³ñ}
-\hypersetup{
-  pdftitle={\PDFtitle},
-  pdfauthor={\PDFauthors},
-%   pdfsubject={},
-%   pdfkeywords={}
- }
-
-\usepackage{multicol} % do sk³adu w dwóch kolumnach
-
-%---- tylko na potrzeby tego pliku
-\makeatletter
-\renewcommand{\verbatim@font}{\ttfamily\small}
-\makeatother
-%-----
+%------------------------------------------------------------
+%			 Pocz¹tek naszej pracy dyplomowej  %
+%------------------------------------------------------------
 
 \begin{document}
 
-\tableofcontents    % spis treœci
-\listoffigures      % spis obrazków
+%------------------------------------------------------------
+%  Dodanie strony tytu³owej wygenerowanej z MojaPG oraz 
+%  						oœwiadczenia
 
-\include{chapter1}
-\include{chapter2}
+%\includepdf{meta/strona_tytulowa.pdf}
+%\includepdf{meta/oswiadczenie.pdf}
 
-%bibliografia
-\bibliographystyle{plain}                       % styl bibliografii
-\begin{thebibliography}{3}                      % pocz¹tek œrodowiska
-\addcontentsline{toc}{chapter}{Bibliografia}    % dodaje bibliografiê do spisu treœci
-\small              % spisy i bibliografie sk³adamy mniejszym stopniem pisma
-% przyk³adowy wpis
-    \bibitem{Duda}      % \bibitem{etykieta}
-A. Duda,\emph{Wprowadzenie do topologii}, PWN, Warszawa 1986
-% nastêpna pozycja
-    \bibitem{EngeSiek}
-R. Engelking, K. Sieklucki, \emph{Geometria i topologia. Czêœæ II. Topologia}, PWN, Warszawa 1980
-% nastêpna pozycja
-    \bibitem{Patk}
-H. Patkowska, \emph{Wstêp do topologii}, PWN, Warszawa 1979
-% nastêpna pozycja
-    \bibitem{Siek}
-K. Sieklucki, \emph{Geometria i topologia. Czêœæ I. Geometria}, PWN, Warszawa 1979
-% nastêpna pozycja
-    \bibitem{Rutkowski}
-Rutkowski J., \emph{Algebra Abstrakcyjna w zadaniach},  Wydawnictwo Naukowe PWN, Warszawa 2005
-\end{thebibliography}                           % koniec œrodowiska
+%------------------------------------------------------------
+%  Dodanie strony tytu³owej wygenerowanej z MojaPG oraz 
+%  						oœwiadczenia
+
+\input{meta/streszczenie.tex}
+\input{meta/abstract.tex}
+
+%------------------------------------------------------------
+%	Utworzenie spisu treœci pracy dyplomowej
+\tableofcontents
+
+%------------------------------------------------------------
+%	Dodanie wykazu wazniejszych skrótów i oznaczeñ 
+\input{meta/oznaczenia.tex}
+
+%------------------------------------------------------------
+%	Dodanie rozdzia³ów pracy dyplomowej - g³ówne cia³o 
+
+%\input{rozdzialy/rozdzial_1.tex}
+%\input{rozdzialy/rozdzial_2.tex}
+%\input{rozdzialy/rozdzial_3.tex}
+%\input{rozdzialy/rozdzial_4.tex}
+%\input{rozdzialy/rozdzial_5.tex}
+%\input{rozdzialy/rozdzial_6.tex}
+
+
+% ---------------------- Bibliografia -----------------------
+\input{meta/Bibliografia.tex} % dodanie pliku bibliografii
+% -----------------------------------------------------------
+
+%------------------------------------------------------------
+%	Dodanie wykazu rysunków oraz tabeli
+
+\renewcommand{\baselinestretch}{1.0}\normalsize	% ¿eby w wykazach by³a pojedyncza interlinia
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\renewcommand{\baselinestretch}{1.5}\normalsize	% powrót do interlinii 1.5 na wypadek dodatków
+
+
+% ---------------------- DODATKI -----------------------
+% Zale¿nie od dodatku, najlepiej jest je dodawaæ jako
+% dokumenty PDF
+% \includepdf{dodatki/dodatek1.pdf}
+% -----------------------------------------------------------
 \end{document}
-
-%EOF
+%------------------------------------------------------------
+			 %	Koniec naszej pracy dyplomowej  %
+%------------------------------------------------------------

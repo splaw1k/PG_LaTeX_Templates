@@ -47,7 +47,7 @@
   a4paper,                      % see (g1)
 %   portrait,                     % see (g2), LaTeX default, no such option in report.cls
   10pt,                         % see (g4)
-  twoside,                      % see (g9)
+  oneside,                      % see (g9)
   notitlepage,                  % see (TP) !!!
   openright,                    % see (h1), this is common custom
 ]{report}
@@ -74,7 +74,7 @@
 % baseline see(g5)
 %--------------------------------------------------------------------
 
-\linespread{1.3} % factor 1.3 gives ,,one and a half'' line spacing
+\linespread{1.5} % factor 1.3 gives ,,one and a half'' line spacing
 
 %--------------------------------------------------------------------
 % margins see (g6)
@@ -126,7 +126,7 @@
 {\thechapter.\quad}
 {0pt}
 {\MakeUppercase{#1}}
-\titlespacing*{\chapter}{0pt}{12pt}{6pt}
+\titlespacing*{\chapter}{0pt}{0pt}{6pt}
 
 % section
 \titleformat{\section}                          % see (h2)
@@ -134,7 +134,7 @@
 {\thesection.\quad}
 {0pt}
 {#1}
-\titlespacing{\section}{0pt}{12pt}{6pt}
+\titlespacing{\section}{0pt}{6pt}{6pt}
 
 % subsection
 \titleformat{\subsection}                       % see (h3)
@@ -142,7 +142,7 @@
 {\thesubsection.\quad}
 {0pt}
 {#1}
-\titlespacing{\subsection}{0pt}{12pt}{6pt}
+\titlespacing{\subsection}{0pt}{6pt}{6pt}
 
 %--------------------------------------------------------------------
 % TOC (see (toc1)-(toc3)
@@ -151,11 +151,11 @@
 %TODO: 6. 7. 8.
 
 \RequirePackage{titletoc}
-
+\renewcommand\bibname{Wykaz literatury} %Zmiana "Bibliografia" na "Wykaz literatury"
 \titlecontents{chapter}
     [0em] % no indentation
     {}
-    {\contentslabel[\thecontentslabel.]{1.5em}} % suitable only for one-digit and a comma
+    {\contentslabel[\thecontentslabel.]{2em}} % suitable only for one-digit and a comma
     {\hspace*{-1.5em}}                          % !
     {\dotfill\contentspage}
 
@@ -183,9 +183,9 @@
 \setenumerate{
 %     labelindent=0em,
 %     itemindent=\indentenit,
-    topsep=1.5\parskip,
-    itemsep=1.5\parskip,
-    partopsep=10pt,
+    topsep=0pt,
+    nolistsep,
+    noitemsep,
 %     align=left
     }
 \setenumerate[1]{label=\arabic*.}   % first level 1.
@@ -194,9 +194,9 @@
 \setitemize{
 %     labelindent=0em,
 %     itemindent=\indentenit,
-    itemsep=0pt,
     topsep=0pt,
-%     partopsep=0pt,
+    noitemsep,
+    nolistsep,
 %     align=left
 }
 
@@ -208,12 +208,9 @@
 % math
 %--------------------------------------------------------------------
 
-\RequirePackage{amsmath}
-% \RequirePackage{amsfonts}
-\RequirePackage{amssymb}
 \RequirePackage{amsthm}
 
-
+ 
 %%%%%%%% œrodowiska twierdznieñ %%%%%%%%
 \newtheoremstyle{SPPG_th1}% hnamei
 {10pt plus5pt minus2pt}% hSpace abovei
@@ -242,3 +239,94 @@
 \RequirePackage[font=small,labelfont=bf]{caption}
 \RequirePackage{subfig}
 %EOF
+
+%---------------------- DODANE PRZEZ PS -----------------------------
+
+
+\setlength{\intextsep}{0mm}		
+\setlength{\textfloatsep}{0mm}
+
+
+% zmiana nazwy, czcionki, marginesu i separatora dla listy figur
+\renewcommand{\listfigurename}{Wykaz rysunków}
+
+% zmiana nazwa, czcionki, marginesu i separatora dla listy tabel
+\renewcommand{\listtablename}{Wykaz tabel}
+
+% ¿eby nie by³o wdów i sierot
+\widowpenalty10000
+\clubpenalty10000
+
+% Modyfikacja podpisu rysunków (zmiana na Rys. X niepogrubione)
+% Separator po identyfikatorze rysunku
+\renewcommand{\figurename}{Rys.}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup[figure]{justification=centering,labelfont=md} % inaczej niz w tabelach - zawsze centruj podpis
+\captionsetup[figure]{labelsep=dot} % u¿yj kropki jako separatora ale nie pogrubiaj
+
+
+%----------------------------- DODANIE POLECEÑ KONFIGURACYJNYCH ------------
+
+\usepackage[unicode=true]{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{multicol} % do sk³adu w dwóch kolumnach
+\usepackage{listings} % do prezentowania listingu kodu
+\usepackage{color}
+
+
+
+%----------------------Konfiguracja listingów----------------
+%------------------------------------------------------------
+
+% Definicje kolorów
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=0.9\baselineskip,
+  breaklines=true,
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=3pt,                   % how far the line-numbers are from the code
+  numberstyle=\footnotesize\color{mygray}, % the style that is used for the line-numbers
+  xleftmargin=\parindent,
+  showstringspaces=false,
+  basicstyle=\normalsize\ttfamily,
+  keywordstyle=\bfseries\color{green},
+  commentstyle=\itshape\color{red},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  language=C,                 % the language of the code
+}
+
+\lstdefinestyle{matlab}{
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or  ast arg
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1000,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
