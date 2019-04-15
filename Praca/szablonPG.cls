@@ -152,12 +152,15 @@
 
 \RequirePackage{titletoc}
 \renewcommand\bibname{Wykaz literatury} %Zmiana "Bibliografia" na "Wykaz literatury"
+
 \titlecontents{chapter}
     [0em] % no indentation
     {}
-    {\contentslabel[\thecontentslabel.]{2em}} % suitable only for one-digit and a comma
-    {\hspace*{-1.5em}}                          % !
+    {\contentslabel[\thecontentslabel.]{1em}} % suitable only for one-digit and a comma
+    {\hspace*{-1em}}                          % !
     {\dotfill\contentspage}
+    
+
 
 \titlecontents{section}
     [2em] % ie, 1.5em (chapter) + 0.5em
@@ -234,17 +237,18 @@
 % pictures
 %--------------------------------------------------------------------
 
-\RequirePackage{graphicx}
-%captions should be given in smaller size than main text
-\RequirePackage[font=small,labelfont=bf]{caption}
 \RequirePackage{subfig}
 %EOF
 
 %---------------------- DODANE PRZEZ PS -----------------------------
-
-
-\setlength{\intextsep}{0mm}		
-\setlength{\textfloatsep}{0mm}
+\usepackage[unicode=true]{hyperref}
+\usepackage[skip=2pt]{caption}
+\usepackage{pdfpages}
+\usepackage{multicol} % do sk³adu w dwóch kolumnach
+\usepackage{listings} % do prezentowania listingu kodu
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{graphicx} 				 
 
 
 % zmiana nazwy, czcionki, marginesu i separatora dla listy figur
@@ -257,23 +261,18 @@
 \widowpenalty10000
 \clubpenalty10000
 
-% Modyfikacja podpisu rysunków (zmiana na Rys. X niepogrubione)
+% Modyfikacja podpisu rysunków i tabel  (zmiana na Rys. X niepogrubione)
 % Separator po identyfikatorze rysunku
 \renewcommand{\figurename}{Rys.}
 \DeclareCaptionLabelSeparator{dot}{. }
 \captionsetup[figure]{justification=centering,labelfont=md} % inaczej niz w tabelach - zawsze centruj podpis
 \captionsetup[figure]{labelsep=dot} % u¿yj kropki jako separatora ale nie pogrubiaj
+\captionsetup[table]{labelsep=dot} % u¿yj kropki jako separatora ale nie pogrubiaj
 
-
+\setlength{\intextsep}{3mm}		 % odleg³oœci separacji tekstu od rysunków/tabel
+\setlength{\textfloatsep}{3mm}
 %----------------------------- DODANIE POLECEÑ KONFIGURACYJNYCH ------------
 
-\usepackage[unicode=true]{hyperref}
-\usepackage{float}
-\usepackage{caption}
-\usepackage{pdfpages}
-\usepackage{multicol} % do sk³adu w dwóch kolumnach
-\usepackage{listings} % do prezentowania listingu kodu
-\usepackage{color}
 
 
 
@@ -281,52 +280,154 @@
 %------------------------------------------------------------
 
 % Definicje kolorów
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
-
-\lstdefinestyle{customc}{
-  belowcaptionskip=0.9\baselineskip,
-  breaklines=true,
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=3pt,                   % how far the line-numbers are from the code
-  numberstyle=\footnotesize\color{mygray}, % the style that is used for the line-numbers
-  xleftmargin=\parindent,
-  showstringspaces=false,
-  basicstyle=\normalsize\ttfamily,
-  keywordstyle=\bfseries\color{green},
-  commentstyle=\itshape\color{red},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  language=C,                 % the language of the code
-}
+\definecolor{WhitePG}{RGB}{250, 250, 250}
+\definecolor{BluePG}{RGB}{10, 55,100}
+\definecolor{RedPG}{RGB}{227,27,35}
+\definecolor{GreenPG}{RGB}{0,153,0}
 
 \lstdefinestyle{matlab}{
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or  ast arg
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
+  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
+  commentstyle=\color{GreenPG},    % comment style
   deletekeywords={...},            % if you want to delete keywords from the given language
   escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1000,                % start line enumeration with line 1000
+  firstnumber=1,                % start line enumeration with line 1000
   frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  language=Octave,                 % the language of the code
+  keywordstyle=\color{BluePG}\bfseries,       % keyword style
+  language=Matlab,                 % the language of the code
   morekeywords={*,...},            % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
   rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
   showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mymauve},     % string literal style
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{RedPG},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+
+\lstdefinestyle{cpp}{
+  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
+  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{GreenPG},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{BluePG}\bfseries,       % keyword style
+  language=C++,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{RedPG},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{java}{
+  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
+  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{GreenPG},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{BluePG}\bfseries,       % keyword style
+  language=Java,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{RedPG},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{vhdl}{
+  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
+  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{GreenPG},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{BluePG}\bfseries,       % keyword style
+  language=VHDL,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{RedPG},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
+  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{GreenPG},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{BluePG}\bfseries,       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{RedPG},     % string literal style
   tabsize=2,	                   % sets default tabsize to 2 spaces
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
