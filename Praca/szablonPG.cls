@@ -248,7 +248,11 @@
 \usepackage{listings} % do prezentowania listingu kodu
 \usepackage{color}
 \usepackage{wrapfig}
-\usepackage{graphicx} 				 
+\usepackage{graphicx} 		
+\usepackage{tikz} 	
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows}	
+		 
 
 
 % zmiana nazwy, czcionki, marginesu i separatora dla listy figur
