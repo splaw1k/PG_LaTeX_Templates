@@ -1,0 +1,144 @@
+%--------------- Dodanie pliku konfiguracyjnego do prezentacji ---------------%
+\input{config.tex}
+%-----------------------------------------------------------------------------%
+
+
+
+
+%---------------- (Uzupełnić!) Dane do strony tytułowej ----------------------%
+\title{Tytuł Prezentacji}
+\author{Autor prezentacji \\ Drugi autor/Promotor}
+\institute{Nazwa wydziału \\ Politechnika Gdańska}
+\date{Data}
+%-----------------------------------------------------------------------------%
+
+
+\begin{document}
+
+%--------------------- Wygenerowanie strony tytułowej ------------------------%
+\setbeamercolor{background canvas}{bg=BackgroundPGBlue} % niebieski kolor PG
+\setbeamertemplate{footline}{} % 
+\frame{
+\maketitle	% strona tytułowa
+}
+
+% Dodanie logo, aby nie znajdowało się na stronie tytułowej
+\logo{\pgfputat{\pgfxy(-10,7.5)}{\pgfbox[center,base]{\includegraphics[scale=0.12]{logo}}}}  
+
+% Aktywacja numeracji w stopce, po prawej stronie
+\setbeamertemplate{footline}{%
+  \begin{flushright}
+  \tiny \normalfont \insertframenumber/\inserttotalframenumber
+  \end{flushright}
+}
+
+% Ustawienie numeracji slajdow
+\addtocounter{framenumber}{-1}
+% Powrót do białego tła
+\setbeamercolor{background canvas}{bg=white}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\setbeamerfont{section in toc}{shape=\bfseries}
+
+%-----------------------------------------------------------------------------%
+
+
+
+%------------------------ POCZĄTEK PREZENTACJI - 1 SLAJD --------------------%
+%----------------------------------------------------------------------------%
+
+\begin{frame}
+\tableofcontents  % Wygenerowanie spisu treści (na podstawie sekcji i podsekcji)
+\frametitle{Plan prezentacji}
+\end{frame}
+
+
+%% Przykładowe sekcje prezentacji %%
+
+\section{Pierwsza sekcja prezentacji}
+\subsection{Pierwsza podsekcja}
+
+\frame{
+\frametitle{Przykładowy slajd}
+
+% Podział slajdu na dwie kolumny
+\begin{columns}
+
+% Pierwsza kolumna 
+\column{0.48\textwidth}
+\begin{figure}
+\includegraphics[scale=0.35]{lena}
+\caption{Przykładowy rysunek zamieszczony w prezentacji}
+\label{rys:lena}
+\end{figure}
+
+% Druga kolumna
+\column{0.48\textwidth}
+ Tutaj znajduje się odniesienie do obrazka nr \ref{rys:lena}, umieszczonego po lewej stronie slajdu.
+\end{columns}
+}
+\subsection{Druga podsekcja}
+
+\section{Druga sekcja prezentacji}
+
+\begin{frame}[fragile] % WYMAGANY ARGUMENT w celu wykorzystania listingu
+\frametitle{Przykładowy slajd c.d.}
+
+\lstset{style=vhdl}
+
+\begin{lstlisting}[caption={Przykładowy listing w języku VHDL}]
+architecture OR_arch of OR_ent is -- linia komentarza
+begin
+    
+    process(x, y) -- linia komentarza
+    begin
+        -- linia komentarza
+        if ((x='0') and (y='0')) then
+	    F <= '0';
+	else
+	    F <= '1';
+	end if;
+    end process;
+
+end OR_arch;
+\end{lstlisting}
+\end{frame}
+
+
+\subsection{Podsekcja}
+
+
+\section{Trzecia sekcja prezentacji}
+\subsection{Podsekcja}
+
+
+\section*{Literatura}
+\frame{
+\small %% lokalne zmniejszenie rozmiaru czcionki
+\frametitle{Materiały źródłowe}
+\begin{enumerate}
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\item Autor J., Autor D.: Tytuł publikacji, Wydawnictwo, Miasto i Data
+\end{enumerate}
+}
+
+
+%-------------------------- Ostatni slajd - Motto PG -----------------------%
+\begin{frame}[plain]
+\addtocounter{framenumber}{-1}
+\vspace{1cm}
+\begin{center}
+\includegraphics[keepaspectratio=true,scale=0.25]{logokoniec.png}
+\end{center}
+\end{frame}
+
+\end{document}
+
+%--------------------------- KONIEC PREZENTACJI ----------------------------%
+%---------------------------------------------------------------------------%

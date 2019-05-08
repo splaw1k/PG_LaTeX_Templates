@@ -11,7 +11,7 @@
 %                                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% let the story begins...
+
 
 %--------------------------------------------------------------------
 % Identification part
@@ -161,7 +161,6 @@
     {\dotfill\contentspage}
     
 
-
 \titlecontents{section}
     [2em] % ie, 1.5em (chapter) + 0.5em
     {}
@@ -179,7 +178,7 @@
 % enumerate and itemize see (e1), (e2)
 %--------------------------------------------------------------------
 
-%TODO 11. 12.
+
 
 \RequirePackage{enumitem}
 
@@ -241,16 +240,16 @@
 %EOF
 
 %---------------------- DODANE PRZEZ PS -----------------------------
-\usepackage[unicode=true]{hyperref}
-\usepackage[skip=2pt]{caption}
-\usepackage{pdfpages}
-\usepackage{multicol} % do sk³adu w dwóch kolumnach
-\usepackage{listings} % do prezentowania listingu kodu
-\usepackage{color}
-\usepackage{wrapfig}
-\usepackage{graphicx} 		
-\usepackage{tikz} 	
-\usepackage{textcomp}
+\RequirePackage[unicode=true]{hyperref}
+\RequirePackage[skip=2pt]{caption}
+\RequirePackage{pdfpages}
+\RequirePackage{multicol} % do sk³adu w dwóch kolumnach
+\RequirePackage{listings} % do prezentowania listingu kodu
+\RequirePackage{color}
+\RequirePackage{wrapfig}
+\RequirePackage{graphicx} 		
+\RequirePackage{tikz} 	
+\RequirePackage{textcomp}
 \usetikzlibrary{shapes,arrows}	
 		 
 
@@ -276,7 +275,6 @@
 \setlength{\intextsep}{3mm}		 % odleg³oœci separacji tekstu od rysunków/tabel
 \setlength{\textfloatsep}{3mm}
 %----------------------------- DODANIE POLECEÑ KONFIGURACYJNYCH ------------
-
 
 
 

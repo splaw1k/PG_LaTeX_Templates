@@ -1,0 +1,237 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%POCZ¥TEK CZÊŒCI KONFIGURACYJNEJ%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
+\usepackage{pgf}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{beamerthemesplit}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage{srcltx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{caption}  % do konfiguracji podpisów
+\usepackage{helvet}   % czcionka podobna do Arial
+\usepackage{listings} % do prezentowania listingu kodu
+
+\setbeamertemplate{headline}{}
+
+
+\mode<presentation>
+\captionsetup{font=scriptsize,labelfont=scriptsize}
+\addto\captionspolish{%
+  \renewcommand{\figurename}{Rys.}%
+}
+\captionsetup[figure]{justification=centering,labelfont=md} % centrowanie podpisu obrazka
+\beamertemplatenavigationsymbolsempty  % Wy³¹czenie widocznoœci symboli do nawigowania rzutnikiem
+
+%%%% Aktywacja numeracji slajdów i rysunków %%%%%%
+\setbeamertemplate{footline}[frame number, footnote]
+\setbeamertemplate{caption}[numbered]
+
+%%%%%% Konfiguracja czcionki do wzorów? %%%%%%%%%
+  \useinnertheme{circles}   % punktory w kszta³cie ko³a
+  \usefonttheme[onlymath]{serif}
+  \setbeamercovered{transparent}
+
+%%%%%%%% Definicje nowych, piêknych kolorów PG, oraz czcionek %%%%%%%%%%
+\definecolor{BackgroundPGBlue}{RGB}{10, 55, 102}
+% Definicje kolorów
+\definecolor{WhitePG}{RGB}{250, 250, 250}
+\definecolor{BluePG}{RGB}{10, 55,100}
+\definecolor{RedPG}{RGB}{227,27,35}
+\definecolor{GreenPG}{RGB}{0,153,0}
+
+%%%%%%%% Globalne ustawienia kolorów dla poszczególnych sekcji (tytuly, podpisy itp) oraz czcionek %%%%%%
+\setbeamercolor{frametitle}{bg=white,fg=BackgroundPGBlue}
+\setbeamercolor{itemize item}{fg=BluePG}
+\setbeamercolor{item}{fg=BluePG}
+\setbeamercolor{thead}{fg=white,bg=RedPG}
+\setbeamercolor{normal text}{fg=BluePG}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamercolor{section in toc}{fg=BluePG}
+\setbeamertemplate{enumerate items}[default]
+%%%%%%%% Ustawienie okreœlonej pozycji sekcji tytu³u slajdu %%%%%%%%%
+\makeatletter
+\setbeamertemplate{frametitle}{%
+ \vspace*{0.7cm} \hspace*{3.6cm} 
+  \begin{minipage}{0.65\textwidth}
+    \usebeamerfont{frametitle}%
+	\begin{small}
+	\begin{spacing}{0.8}
+	 \textbf{\insertsection}
+	 \end{spacing}
+	\end{small}
+  \end{minipage}
+  
+ \vspace{0.2cm}
+ 
+ \begin{beamercolorbox}[sep=0.3cm,wd=15cm]{thead}
+ \begin{small}\textbf{\insertframetitle}
+ \end{small}
+ \end{beamercolorbox}
+}
+\makeatother
+
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \begin{center}
+  \vspace{1cm}
+  \includegraphics[scale=0.14]{logotytul} \\ \vspace{0.6cm}
+  \usebeamercolor[fg]{subtitle}
+  \usebeamerfont{title}\textbf{\inserttitle} \\ \vspace{0.35cm}
+  \usebeamerfont{author} Autor: \insertauthor \\ \vspace{0.4cm}
+  \usebeamerfont{institute}\insertinstitute \\
+  \usebeamerfont{date}\insertdate\par
+  \end{center}
+}
+
+
+\lstdefinestyle{matlab}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\tiny,  % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+
+\lstdefinestyle{cpp}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\tiny,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+\lstdefinestyle{java}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\tiny,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+\lstdefinestyle{vhdl}{
+backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\tiny,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\tiny,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
