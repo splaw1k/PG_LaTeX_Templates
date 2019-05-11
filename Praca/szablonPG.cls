@@ -1,36 +1,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                                %
-%                              szablonPG.cls                                     %
+%                                   szablonPG.cls                                %
 %                                                                                %
-% A LaTeX2e document class for Eng/BSc/MSc thesis template                       %
-%                                             Gdañsk University of Technology    %
+% 	 Szablon pracy dyplomowej zgodny z wymaganiami edytorskimi przedstawionymi   %
+%				 w Zarz¹dzeniu Rektora PG nr 22/2018 z 20 czerwca 2018 r.		 %
 %                                                                                %
-%  (c) 2016, by Jakub Maksymiuk                                                  %
+%  							(c) 2019 Jakub Maksymiuk                             %							%		 							 Pawe³ Sp³awski							     %
+%									 Pawe³ Zarembski							 %
+%								   Kamil Andrzejewski							 %
 %                                                                                %
-%  ---- see README.txt for more details                                          %
+%                                         										 %
 %                                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 %--------------------------------------------------------------------
-% Identification part
-%--------------------------------------------------------------------
-
-\def\fileversion{1.0}
-\def\filedate{2016/02/01}
-
-\NeedsTeXFormat{LaTeX2e}
-
-\ProvidesClass{szablonPG}[\filedate\space Version \fileversion\space by Jakub Maksymiuk]
-\typeout{****}
-\typeout{*}
-\typeout{*  beta version of szablonPG - everything may change}
-\typeout{*}
-\typeout{****}
-
-%--------------------------------------------------------------------
-% Declaration of options
+% Zdeklarowanie opcji 
 %--------------------------------------------------------------------
 
 \newif\ifnostrict
@@ -40,58 +25,53 @@
 \ProcessOptions \relax
 
 %--------------------------------------------------------------------
-% basic class for this one is report class
+% Pobranie ustawieñ podstawowej klasy dokumentu - klasa report
 %--------------------------------------------------------------------
 
 \LoadClass[
-  a4paper,                      % see (g1)
-%   portrait,                     % see (g2), LaTeX default, no such option in report.cls
-  10pt,                         % see (g4)
-  oneside,                      % see (g9)
-  notitlepage,                  % see (TP) !!!
-  openright,                    % see (h1), this is common custom
+  a4paper,                      % format A4
+  10pt,                         % rozmiar czcionki
+  oneside,                      % druk jednostronny
+  notitlepage,                  % brak strony tytu³owej
+  openright,                    % orientacja otwierania dokumentu
 ]{report}
 
 %--------------------------------------------------------------------
-% language - polish by default
+% Ustawienie domyœlnego jêzyka i kodowania
 %--------------------------------------------------------------------
 
-%TODO: 1. 2.
 \RequirePackage{polski}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[cp1250]{inputenc}       % other options: utf8, latin2
+\RequirePackage[cp1250]{inputenc}       % kodowanie windows1250
 
 %--------------------------------------------------------------------
-% basic font
+% Podstawowa czcionka - Helvetica (Zamiennik dla czcionki Arial)
 %--------------------------------------------------------------------
 
-%TODO: (g3), 3.
-\usepackage{helvet}
-\usepackage{mathpazo}
+\RequirePackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
 %--------------------------------------------------------------------
-% baseline see(g5)
+% Ustawienie interlinii
 %--------------------------------------------------------------------
 
-\linespread{1.5} % factor 1.3 gives ,,one and a half'' line spacing
+\linespread{1.3} % 1.3 odpowiada interlinii 1.5, 1.6 dla interlinii 2
 
 %--------------------------------------------------------------------
-% margins see (g6)
+% Ustawienie marginesów
 %--------------------------------------------------------------------
 
 \RequirePackage[%
     margin=2.5cm,
     a4paper,
-%     includeheadfoot,
     bindingoffset=1cm
 ]{geometry}
 
 %--------------------------------------------------------------------
-% paragraph indentation see (g8)
+% Ustawienia akapitów
 %--------------------------------------------------------------------
 
-\usepackage{indentfirst}
+\RequirePackage{indentfirst}
 
 \ifnostrict
     \setlength{\parindent}{1.5 em}
@@ -100,7 +80,7 @@
 \fi
 
 %--------------------------------------------------------------------
-% pagination see (g10)
+% Numeracja stron 
 %--------------------------------------------------------------------
 
 \pagenumbering{arabic}
@@ -116,28 +96,28 @@
 \pagestyle{plain}
 
 %--------------------------------------------------------------------
-% headings
+% Ustawienia nag³ówków
 %--------------------------------------------------------------------
 \RequirePackage[explicit, clearempty]{titlesec}
 
-% chapter
-\titleformat{\chapter}[hang]                    % see (h1)
+% konfiguracja dla tytu³u rozdzia³u
+\titleformat{\chapter}[hang]                    
 {\bfseries\fontsize{12pt}{24pt}\selectfont}
 {\thechapter.\quad}
 {0pt}
 {\MakeUppercase{#1}}
 \titlespacing*{\chapter}{0pt}{0pt}{6pt}
 
-% section
-\titleformat{\section}                          % see (h2)
+% konfiguracja dla tytu³u podrozdzia³u
+\titleformat{\section}                          
 {\fontsize{11pt}{22pt}\selectfont\bfseries\itshape}
 {\thesection.\quad}
 {0pt}
 {#1}
 \titlespacing{\section}{0pt}{6pt}{6pt}
 
-% subsection
-\titleformat{\subsection}                       % see (h3)
+% konfiruacja dla pod-podrozdzia³ów
+\titleformat{\subsection}                      
 {\normalfont\itshape}
 {\thesubsection.\quad}
 {0pt}
@@ -145,84 +125,74 @@
 \titlespacing{\subsection}{0pt}{6pt}{6pt}
 
 %--------------------------------------------------------------------
-% TOC (see (toc1)-(toc3)
+% Spis treœci - konfiguracja 
 %--------------------------------------------------------------------
 
-%TODO: 6. 7. 8.
-
 \RequirePackage{titletoc}
-\renewcommand\bibname{Wykaz literatury} %Zmiana "Bibliografia" na "Wykaz literatury"
 
+% ustawienia dla rozdzia³ów w spisie treœci
 \titlecontents{chapter}
     [0em] % no indentation
     {}
-    {\contentslabel[\thecontentslabel.]{1em}} % suitable only for one-digit and a comma
-    {\hspace*{-1em}}                          % !
+    {\contentslabel[\thecontentslabel.]{1em}} 
+    {\hspace*{-1em}}                         
     {\dotfill\contentspage}
     
-
+% ustawienia dla podrozdzia³ów w spisie treœci
 \titlecontents{section}
     [2em] % ie, 1.5em (chapter) + 0.5em
     {}
-    {\contentslabel[\thecontentslabel.]{2em}}   %two digits and two dots
-    {\hspace*{-2.3em}}                          % !
+    {\contentslabel[\thecontentslabel.]{2em}}  
+    {\hspace*{-2.3em}}                          
     {\dotfill\contentspage}
 
+% ustawienia dla pod-podrozdzia³ów w spisie treœci
 \titlecontents{subsection}
     [5em] % ie, 2em (section) + 3em
     {}
-    {\contentslabel[\thecontentslabel.]{3em}}  %three digits and three dots
-    {\hspace*{-2.3em}}                          % !
+    {\contentslabel[\thecontentslabel.]{3em}}  
+    {\hspace*{-2.3em}}                        
     {\dotfill\contentspage}
 %--------------------------------------------------------------------
-% enumerate and itemize see (e1), (e2)
+% Konfiguracja list numerowanych i nienumerowanych
 %--------------------------------------------------------------------
-
-
 
 \RequirePackage{enumitem}
 
 \setenumerate{
-%     labelindent=0em,
-%     itemindent=\indentenit,
     topsep=0pt,
     nolistsep,
     noitemsep,
-%     align=left
     }
-\setenumerate[1]{label=\arabic*.}   % first level 1.
-\setenumerate[2]{label=\alph*)}     % second level a)
+\setenumerate[1]{label=\arabic*.}  
+\setenumerate[2]{label=\alph*)}     
 
 \setitemize{
-%     labelindent=0em,
-%     itemindent=\indentenit,
     topsep=0pt,
     noitemsep,
     nolistsep,
-%     align=left
 }
 
-% \RequirePackage{textcomp} % for \textbullet and \textopenbullet only
-% \setitemize[1]{label=\textbullet}   % first level \textbullet
-% \setitemize[2]{label=\textopenbullet}     % second level \textopenbullet
 
 %--------------------------------------------------------------------
-% math
+% Konfiguracja prezentacji aparatu matematycznego
 %--------------------------------------------------------------------
 
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
 \RequirePackage{amsthm}
 
- 
-%%%%%%%% œrodowiska twierdznieñ %%%%%%%%
-\newtheoremstyle{SPPG_th1}% hnamei
-{10pt plus5pt minus2pt}% hSpace abovei
-{10pt plus3pt}% hSpace belowi
-{}% hBody fonti
-{}% hIndent amounti1
-{\bfseries}% hTheorem head fonti
-{.}% hPunctuation after theorem headi
-{.5em}% hSpace after theorem headi2
-{}% hTheorem head spec (can be left empty, meaning `normal')i
+
+%%%%%%%% œrodowiska twierdzeñ %%%%%%%%
+\newtheoremstyle{SPPG_th1}% hname
+{10pt plus5pt minus2pt}% hSpace above
+{10pt plus3pt}% hSpace below
+{}% hBody font
+{}% hIndent amount
+{\bfseries}% hTheorem head font
+{.}% hPunctuation after theorem head
+{.5em}% hSpace after theorem head
+{}% hTheorem head spec 
 \theoremstyle{SPPG_th1}
 
 \newtheorem{definicja}{Definicja}[chapter]
@@ -233,14 +203,11 @@
 \newtheorem{przyklad}[definicja]{Przyk³ad}
 
 %--------------------------------------------------------------------
-% pictures
+% Konfiguracja obrazków oraz tabel
 %--------------------------------------------------------------------
-
 \RequirePackage{subfig}
-%EOF
-
-%---------------------- DODANE PRZEZ PS -----------------------------
 \RequirePackage[unicode=true]{hyperref}
+\RequirePackage{setspace}
 \RequirePackage[skip=2pt]{caption}
 \RequirePackage{pdfpages}
 \RequirePackage{multicol} % do sk³adu w dwóch kolumnach
@@ -251,185 +218,196 @@
 \RequirePackage{tikz} 	
 \RequirePackage{textcomp}
 \usetikzlibrary{shapes,arrows}	
-		 
 
-
-% zmiana nazwy, czcionki, marginesu i separatora dla listy figur
-\renewcommand{\listfigurename}{Wykaz rysunków}
-
-% zmiana nazwa, czcionki, marginesu i separatora dla listy tabel
-\renewcommand{\listtablename}{Wykaz tabel}
-
-% ¿eby nie by³o wdów i sierot
-\widowpenalty10000
-\clubpenalty10000
 
 % Modyfikacja podpisu rysunków i tabel  (zmiana na Rys. X niepogrubione)
 % Separator po identyfikatorze rysunku
 \renewcommand{\figurename}{Rys.}
 \DeclareCaptionLabelSeparator{dot}{. }
-\captionsetup[figure]{justification=centering,labelfont=md} % inaczej niz w tabelach - zawsze centruj podpis
-\captionsetup[figure]{labelsep=dot} % u¿yj kropki jako separatora ale nie pogrubiaj
-\captionsetup[table]{labelsep=dot} % u¿yj kropki jako separatora ale nie pogrubiaj
+\captionsetup[figure]{justification=centering,labelfont=md} % centrowanie podpisu rysunku
+\captionsetup[figure]{labelsep=dot} % kropka jako separator, bez pogrubiania
+\captionsetup[table]{labelsep=dot} % kropka jako separator, bez pogrubiania
+
+% Zmniejszenie czcionki oraz interlinii w podpisach
+\captionsetup{font={small,stretch=1.0}}
 
 \setlength{\intextsep}{3mm}		 % odleg³oœci separacji tekstu od rysunków/tabel
 \setlength{\textfloatsep}{3mm}
-%----------------------------- DODANIE POLECEÑ KONFIGURACYJNYCH ------------
 
 
+%--------------------------------------------------------------------
+% Dodatkowe ustawienia
+%--------------------------------------------------------------------
+ 
+\renewcommand\bibname{Wykaz literatury} % Zamiana na tytu³ "Wykaz literatury"
 
-%----------------------Konfiguracja listingów----------------
+% Zmiana na tytu³ "Wykaz rysunków"
+\renewcommand{\listfigurename}{Wykaz rysunków}
+
+% Zmiana na tytu³ "Wykaz tabel"
+\renewcommand{\listtablename}{Wykaz tabel}
+
+% Brak "wdów" i "sierot"
+\widowpenalty10000
+\clubpenalty10000
+
+
+%------------------------------------------------------------
+% Konfiguracja listingów - zdefiniowaæ mo¿na tak¿e dodatkowe
+% style dla nowych jêzyków, wed³ug zapotrzebowania
 %------------------------------------------------------------
 
-% Definicje kolorów
+% Definicje kolorów dla listingów
 \definecolor{WhitePG}{RGB}{250, 250, 250}
 \definecolor{BluePG}{RGB}{10, 55,100}
 \definecolor{RedPG}{RGB}{227,27,35}
 \definecolor{GreenPG}{RGB}{0,153,0}
 
+
 \lstdefinestyle{matlab}{
-  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
-  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{GreenPG},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{BluePG}\bfseries,       % keyword style
-  language=Matlab,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{RedPG},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,  % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
 }
 
 
 \lstdefinestyle{cpp}{
-  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
-  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{GreenPG},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{BluePG}\bfseries,       % keyword style
-  language=C++,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{RedPG},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=C++,                    % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
 }
 
 \lstdefinestyle{java}{
-  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
-  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{GreenPG},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{BluePG}\bfseries,       % keyword style
-  language=Java,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{RedPG},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Java,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
 }
 
 \lstdefinestyle{vhdl}{
-  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
-  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{GreenPG},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{BluePG}\bfseries,       % keyword style
-  language=VHDL,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{RedPG},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=VHDL,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
 }
 
 
 \lstdefinestyle{python}{
-  backgroundcolor=\color{WhitePG},   % choose the background color; you must add \usepackage{color} or  ast arg
-  basicstyle=\linespread{1}\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{GreenPG},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{BluePG}\bfseries,       % keyword style
-  language=Python,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{RedPG},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Python,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
 }
+
