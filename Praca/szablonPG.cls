@@ -5,9 +5,10 @@
 % 	 Szablon pracy dyplomowej zgodny z wymaganiami edytorskimi przedstawionymi   %
 %				 w Zarz¹dzeniu Rektora PG nr 22/2018 z 20 czerwca 2018 r.		 %
 %                                                                                %
-%  							(c) 2019 Jakub Maksymiuk                             %							%		 							 Pawe³ Sp³awski							     %
+%  							(c) 2019 Jakub Maksymiuk                             %							
+%		 							 Pawe³ Sp³awski							     %
 %									 Pawe³ Zarembski							 %
-%								   Kamil Andrzejewski							 %
+%								   	 Kamil Andrzejewski							 %
 %                                                                                %
 %                                         										 %
 %                                                                                %
