@@ -1,0 +1,171 @@
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+
+\ProvidesPackage{listing_schemat}
+
+\RequirePackage{tikz} 			% Pakiet do rysowania schematów blokowych
+\RequirePackage{textcomp}		% Pakiet pomocniczy do tikz
+\usetikzlibrary{shapes,arrows}  % Pakiet pomocniczy do tikz
+\RequirePackage{listings} 		% do prezentowania listingu kodu
+
+
+%------------------------------------------------------------
+% Konfiguracja listingów - zdefiniowaæ mo¿na tak¿e dodatkowe
+% style dla nowych jêzyków, wed³ug zapotrzebowania
+%------------------------------------------------------------
+
+% Definicje kolorów dla listingów
+\definecolor{WhitePG}{RGB}{250, 250, 250}
+\definecolor{BluePG}{RGB}{10, 55,100}
+\definecolor{RedPG}{RGB}{227,27,35}
+\definecolor{GreenPG}{RGB}{0,153,0}
+
+
+\lstdefinestyle{matlab}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,  % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Matlab,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+
+\lstdefinestyle{cpp}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=C++,                    % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+\lstdefinestyle{java}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Java,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+\lstdefinestyle{vhdl}{
+backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=VHDL,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{WhitePG},   % kolor t³a dla listingu
+  basicstyle=\linespread{1}\footnotesize,        % rozmiar czcionki dla kodu w listingu
+  breakatwhitespace=false,         % ustawienie bia³ej spacji
+  breaklines=true,                 % automatyczne ³amanie linii
+  captionpos=b,                    % opis listingu pod ramk¹
+  commentstyle=\color{GreenPG},    % ustawienia komentarzy, (kolor)
+  deletekeywords={...},            % usuwane s³owa kluczowe z danego jêzyka
+  escapeinside={\%*}{*)},          % znaki pozwalaj¹ce na zamieszczenie kodu LaTeX w kodzie listingu
+  extendedchars=true,              % u¿ywanie znaków non-ASCII
+  firstnumber=1,                   % pocz¹tkowy numer linii
+  frame=single,	                   % styl ramki wokó³ kodu
+  keepspaces=true,                 % zachowywanie sformatowania kodu w listingu
+  keywordstyle=\color{BluePG}\bfseries,      % ustawienia dla wygl¹du s³ów kluczowych w kodzie (kolor)
+  language=Python,                 % wybór jêzyka kodu w listingu
+  morekeywords={*,...},            % dodatkowe s³owa kluczowe dla danego jêzyka
+  numbers=left,                    % umiejscowienie numeracji linii kodu (po lewej, prawie)
+  numbersep=5pt,                   % odleg³oœæ numeracji linii od ramki
+  numberstyle=\tiny\color{black},  % ustawienia rozmiaru itp, dla numeracji linii
+  rulecolor=\color{black},         % zmiana koloru ramki przy ³amaniu wiersza
+  showspaces=false,                % 
+  showstringspaces=false,          % 
+  showtabs=false,                  % 
+  stepnumber=1,                    % odstêp pomiêdzy liniami listingu
+  stringstyle=\color{RedPG},       % ustawienie wygl¹du na ³añcuchów znaków
+  tabsize=2,	                   % ustawienie rozmiaru tabulatora
+  title=\lstname                   % tytu³ listingu na podstawie nazwy pliku kodu
+}
+
+\endinput

@@ -1,0 +1,68 @@
+\documentclass[nostrict]{szablonPG}
+
+%-------------------- Dodatkowe pakiety ---------------------
+\usepackage{listing_schemat}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+%			      Pocz¹tek pracy dyplomowej  
+%------------------------------------------------------------
+
+\begin{document}
+
+%------------------------------------------------------------
+%  Dodanie strony tytu³owej wygenerowanej z MojaPG oraz 
+%  						oœwiadczenia
+
+%\includepdf{meta/strona_tytulowa.pdf}
+%\includepdf{meta/oswiadczenie.pdf}
+
+%------------------------------------------------------------
+%  Dodanie streszczenia i abstract
+%  						
+
+\input{meta/streszczenie.tex}
+\input{meta/abstract.tex}
+
+%------------------------------------------------------------
+%	Utworzenie spisu treœci pracy dyplomowej
+\tableofcontents
+
+%------------------------------------------------------------
+%	Dodanie wykazu wazniejszych skrótów i oznaczeñ 
+\input{meta/oznaczenia.tex}
+
+%------------------------------------------------------------
+%	Dodanie rozdzia³ów pracy dyplomowej - g³ówne cia³o dokumentu 
+
+\input{rozdzialy/przyklad_rozdzialu_1.tex}
+\input{rozdzialy/przyklad_rozdzialu_2.tex}
+%\input{rozdzialy/przyklad_rozdzialu_3.tex}
+
+% itd...
+
+% ---------------------- Bibliografia -----------------------
+\input{meta/Bibliografia.tex} % dodanie pliku bibliografii
+% -----------------------------------------------------------
+
+%------------------------------------------------------------
+%	Dodanie wykazu rysunków oraz tabeli
+
+\renewcommand{\baselinestretch}{1.0}\normalsize	% interlinia w sekcji wykazów
+\addcontentsline{toc}{chapter}{\listfigurename}	% dodanie wykazu rysunków do spisu treœci
+\listoffigures									% generacja wykazu rysunków
+
+\addcontentsline{toc}{chapter}{\listtablename}	% dodanie wykazu tabel do spisu treœci
+\listoftables									% generacja wykazu tabel
+\renewcommand{\baselinestretch}{1.3}\normalsize	% powrót do interlinii 1.5
+
+
+% ---------------------- DODATKI -----------------------
+% Zale¿nie od dodatku, zaleca siê dodawaæ dodatki jako
+% dokumenty PDF
+% \includepdf{dodatki/dodatek1.pdf}
+% -----------------------------------------------------------
+\end{document}
+%------------------------------------------------------------
+			 	%	Koniec pracy dyplomowej  %
+%------------------------------------------------------------
