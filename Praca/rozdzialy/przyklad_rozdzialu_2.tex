@@ -1,10 +1,10 @@
-\chapter{Drugi rozdzia³ testowy}
+\chapter{Drugi rozdzia³}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum arcu nec blandit aliquam. Integer eros dolor, molestie eget dictum quis, luctus sit amet sapien. Proin dignissim felis in ornare volutpat. Morbi vulputate rutrum efficitur. Ut vehicula vehicula metus, et iaculis tortor mattis vel. Nam blandit, arcu quis ultricies blandit, libero ante commodo augue, in accumsan dui leo at orci. Phasellus in augue et velit pulvinar malesuada ut et sem. Nulla vehicula nibh eu odio sollicitudin sagittis. Praesent condimentum semper neque, tincidunt luctus nisl scelerisque sed. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
 Donec in libero a enim tempor finibus. Etiam in turpis sed metus ultricies pharetra vitae a ipsum. Nullam elementum est a vehicula convallis. Praesent vel eleifend quam, id eleifend tortor. Vestibulum non sollicitudin arcu. Nunc ultricies, ex sit amet faucibus elementum, erat est finibus lacus, non porttitor metus mi sed purus. Mauris at volutpat quam. Nam vel varius elit. Donec a urna vitae felis posuere facilisis. Suspendisse id enim quis massa imperdiet ultrices quis eu nibh. Pellentesque in elit ut tortor pharetra condimentum. Fusce non dapibus arcu, non blandit odio. Suspendisse faucibus fermentum neque quis dapibus.
-\section{Pierwsza sekcja testowa}
+\section{Pierwsza sekcja}
 Maecenas tincidunt est sit amet porttitor suscipit. Nullam rutrum lectus ut odio cursus facilisis. Donec fermentum, dolor sed sagittis congue, augue nisi sagittis nulla, nec ultricies sem elit non nibh. Vivamus erat ante, volutpat nec lectus in, finibus iaculis velit. Phasellus vel hendrerit dolor. Cras gravida ac lacus sit amet euismod. Integer venenatis ut tortor id tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ut ex ac volutpat. Suspendisse pellentesque tempus tempus. Nullam pharetra purus nunc, vitae eleifend ligula consectetur vel. Mauris quis quam non massa vestibulum lobortis. Donec suscipit tortor ut dictum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent ut finibus risus. Suspendisse sed risus ultricies, accumsan metus vitae, dignissim justo.
-\subsection{Pierwsza podsekcja testowa}
+\subsection{Pierwsza podsekcja}
 
 \begin{figure}[ht]
 \centering
@@ -26,17 +26,17 @@ Vestibulum lorem elit, ornare vitae ultrices non, rhoncus eu elit. Vestibulum et
     \hline
     \multicolumn{1}{|l|}{\textbf{Lp.}} & \multicolumn{1}{l|}{\textbf{Parametr}} & \multicolumn{1}{c|}{\textbf{Wartoœæ}} \\
     \hline
-       1.   & Napiêcie zasilania [V] & 24  \\
+       1.   & Napiêcie zasilania [V] & 12  \\
     \hline
-       2.   &  Prêdkoœæ obrotowa [obr/min]& 166\\
+       2.   &  Prêdkoœæ obrotowa [obr/min]& 200\\
     \hline
-       3.  & Moment obrotowy [Nm]   & 0.89  \\
+       3.  & Moment obrotowy [Nm]   & 0.8 \\
     \hline
-       4.  & Maks. pr¹d pracy [A]      &  0.88 \\
+       4.  & Maks. pr¹d pracy [A]      &  0.8 \\
     \hline
        5.  & Œrednica wa³u [mm]     &  8 \\
     \hline
-       6.  & Rodzaj czujnika     &  Enkoder impulsowy \\
+       6.  & Rodzaj czujnika     &  Inkrementalny   \\
     \hline
        7.  & Rozdzielczoœæ enkodera [imp/obr]   &  75 \\
     \hline
@@ -50,12 +50,6 @@ Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornar
 
 Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornare fringilla tellus, sit amet bibendum nulla fermentum vitae. Nullam nec consectetur ipsum. Duis pulvinar libero vel diam lacinia, ac dapibus massa malesuada. Nullam sit amet gravida risus, nec tincidunt enim. Integer vehicula, nisl vitae hendrerit molestie, arcu arcu eleifend enim, at tempus odio leo nec nibh. Sed ut tortor risus. Nulla mattis pretium gravida. Phasellus eu augue magna. Proin quis dolor consectetur, accumsan velit et, maximus ipsum. 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.25]{rysunki/example}
-\caption{Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus.}
-\label{img/template2}
-\end{figure}
 
 Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornare fringilla tellus, sit amet bibendum nulla fermentum vitae. Nullam nec consectetur ipsum. Duis pulvinar libero vel diam lacinia, ac dapibus massa malesuada. Nullam sit amet gravida risus, nec tincidunt enim. Integer vehicula, nisl vitae hendrerit molestie, arcu arcu eleifend enim, at tempus odio leo nec nibh. Sed ut tortor risus. Nulla mattis pretium gravida. Phasellus eu augue magna. Proin quis dolor consectetur, accumsan velit et, maximus ipsum. 
 
@@ -85,47 +79,32 @@ for n = 1 : 4
 end
 \end{lstlisting}
 
-\lstset{style=cpp}
 
-\begin{lstlisting}[caption={Przyk³adowy listing programu C++}]
-using namespace std;
+\lstset{style=java}
 
-class Test
-{
-    private:
-        int data1;
-        float data2;
+\begin{lstlisting}[caption={Przyk³adowy listing w jêzyku Java},label=javovy]
+class OuterClass {
+  int x = 10;
 
-    public:
-       
-       void insertIntegerData(int d)
-       {
-          data1 = d;
-          cout << "Number: " << data1; // komentarz w jednej linii
-        }
+  private class InnerClass {
+    int y = 5;
+  }
+}
 
-       float insertFloatData()
-       {
-           cout << "\nEnter data: ";
-           cin >> data2;
-           return data2;
-        }
-};
-
- int main()
- {
-      Test o1, o2;
-      float secondDataOfObject2;
-	   /* Przyk³adowy komentarz */
-      o1.insertIntegerData(12);
-      secondDataOfObject2 = o2.insertFloatData();
-
-      cout << "You entered " << secondDataOfObject2;
-      return 0;
- }
+public class MyMainClass {
+  public static void main(String[] args) {
+    OuterClass myOuter = new OuterClass();
+    OuterClass.InnerClass myInner = myOuter.new InnerClass();
+    System.out.println(myInner.y + myOuter.x);
+  }
+}
 \end{lstlisting}
 
 \newpage
+
+
+
+
 
 \lstset{style=vhdl}
 
@@ -182,45 +161,11 @@ end FSMD;
 
 \end{lstlisting}
 
-\lstset{style=java}
 
-\begin{lstlisting}[caption={Przyk³adowy listing w jêzyku Java},label=javovy]
-class OuterClass {
-  int x = 10;
+Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornare fringilla tellus, sit amet bibendum nulla fermentum vitae. Nullam nec consectetur ipsum. Duis pulvinar libero vel diam lacinia, ac dapibus massa malesuada. Nullam sit amet gravida risus, nec tincidunt enim. Integer vehicula, nisl vitae hendrerit molestie, arcu arcu eleifend enim, at tempus odio leo nec nibh. Sed ut tortor risus. Nulla mattis pretium gravida. Phasellus eu augue magna. Proin quis dolor consectetur, accumsan velit et, maximus ipsum. 
+Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornare fringilla tellus, sit amet bibendum nulla fermentum vitae. Nullam nec consectetur ipsum. Duis pulvinar libero vel diam lacinia, ac dapibus massa malesuada. Nullam sit amet gravida risus, nec tincidunt enim. Integer vehicula, nisl vitae hendrerit molestie, arcu arcu eleifend enim, at tempus odio leo nec nibh. Sed ut tortor risus. Nulla mattis pretium gravida. Phasellus eu augue magna. Proin quis dolor consectetur, accumsan velit et, maximus ipsum. 
 
-  private class InnerClass {
-    int y = 5;
-  }
-}
-
-public class MyMainClass {
-  public static void main(String[] args) {
-    OuterClass myOuter = new OuterClass();
-    OuterClass.InnerClass myInner = myOuter.new InnerClass();
-    System.out.println(myInner.y + myOuter.x);
-  }
-}
-\end{lstlisting}
-
-\newpage
-
-
-\lstset{style=python}
-
-\begin{lstlisting}[caption={Przyk³adowy listing w jêzyku Python}, label=pyton]
-#importing the time module
-import time
-
-#welcoming the user
-name = raw_input("What is your name? ")
-
-print "Hello, " + name, "Time to play hangman!"
-
-#wait for 1 second
-time.sleep(1)
-\end{lstlisting}
-
-Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornare fringilla tellus, sit amet bibendum nulla fermentum vitae. Nullam nec consectetur ipsum. Duis pulvinar libero vel diam lacinia, ac dapibus massa \ref{pyton}  malesuada. Nullam sit amet gravida risus, nec tincidunt enim. Integer vehicula, nisl vitae hendrerit molestie, arcu arcu eleifend enim, at tempus odio leo nec nibh. Sed ut tortor risus. Nulla mattis pretium gravida. Phasellus eu augue magna. Proin quis dolor consectetur, accumsan velit et, maximus ipsum. 
+Nunc egestas mauris sit amet sem facilisis, in rutrum quam faucibus. Etiam ornare fringilla tellus, sit amet bibendum nulla fermentum vitae. Nullam nec consectetur ipsum. Duis pulvinar libero vel diam lacinia, ac dapibus massa malesuada. Nullam sit amet gravida risus, nec tincidunt enim. Integer vehicula, nisl vitae hendrerit molestie, arcu arcu eleifend enim, at tempus odio leo nec nibh. Sed ut tortor risus. Nulla mattis pretium gravida. Phasellus eu augue magna. Proin quis dolor consectetur, accumsan velit et, maximus ipsum. 
 
 
 
