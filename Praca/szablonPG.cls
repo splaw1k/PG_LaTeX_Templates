@@ -74,11 +74,7 @@
 
 \RequirePackage{indentfirst}
 
-\ifnostrict
-    \setlength{\parindent}{1.5 em}
-\else
-    \setlength{\parindent}{1.25cm}
-\fi
+\setlength{\parindent}{0.9cm}
 
 %--------------------------------------------------------------------
 % Numeracja stron 
@@ -214,7 +210,8 @@
 \RequirePackage{multicol} % do sk³adu w dwóch kolumnach
 \RequirePackage{color}
 \RequirePackage{wrapfig}
-\RequirePackage{graphicx} 		
+\RequirePackage{graphicx} 
+\usepackage{etoolbox}	
 
 
 % Modyfikacja podpisu rysunków i tabel  (zmiana na Rys. X niepogrubione)
@@ -248,3 +245,32 @@
 \widowpenalty10000
 \clubpenalty10000
 
+% Nazwy rozdzia³ów w Spisie treœci WIELKIMI LITERAMI
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                         {\protect\numberline{\thechapter}\texorpdfstring{\MakeUppercase{#1}}{#1}}%
+                       \else
+                       \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}%
+                       \fi
+                    \else
+                    \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\makeatother
